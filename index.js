@@ -13,7 +13,7 @@ app.command("/lmgtfy", async ({ ack, body, client }) => {
     await client.chat.postEphemeral({
       channel: body.channel_id,
       user: body.user_id,
-      text: `https://google.com/search?q=${body.text}`,
+      text: `https://google.com/search?q=${encodeURIComponent(body.text)}`,
     });
   } catch (error) {
     console.error(error);
